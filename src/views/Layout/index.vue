@@ -1,16 +1,12 @@
-<script>
-export default {
-
-}
-
+<script setup>
+import Nav from './components/Nav.vue'
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 </script>
 
 <template>
-    <div>我是首页
-        <!-- 二级路由出口 -->
-        <router-view></router-view>
-    </div>
-</template >
-
-
-<style></style>
+    <Nav />
+    <Header />
+    <RouterView />
+    <Footer />
+</template>
