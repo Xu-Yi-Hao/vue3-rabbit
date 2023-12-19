@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, reactive, ref } from 'vue'
 import { getBannerList } from '@/apis/home'
-
+// 获取轮播图
 const bannerList = ref([])
 const getBanner = async () => {
     const res = await getBannerList()

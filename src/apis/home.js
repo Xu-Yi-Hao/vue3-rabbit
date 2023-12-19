@@ -1,9 +1,13 @@
 import request from "@/utils/http";
 
 // 获取轮播图数据
-export function getBannerList() {
+export function getBannerList(params = {}) {
+    const { distributionSite = '1' } = params
     return request({
-        url: '/home/banner'
+        url: '/home/banner',
+        params: {
+            distributionSite
+        }
     })
 }
 
