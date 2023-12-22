@@ -1,5 +1,7 @@
 <script setup>
+import router from '@/router';
 import { useCartStore } from '@/stores/cart'
+import { ElMessage } from 'element-plus'
 const cartStore = useCartStore()
 
 // 单选回调
@@ -13,6 +15,14 @@ const allCheck = (selected) => {
 // 删除
 const delCart = (ids) => {
     cartStore.delCart(ids)
+}
+// 下单结算
+const toCheckout = () => {
+    if (cartStore.cartList.some(item => item.selected === true)) {
+        router.replace('/checkout')
+    } else {
+        ElMessage.warning('请选择你要结算的商品')
+    }
 }
 </script>
 
@@ -73,7 +83,7 @@ const delCart = (ids) => {
                             <td colspan="6">
                                 <div class="cart-none">
                                     <el-empty description="购物车列表为空">
-                                        <el-button type="primary">随便逛逛</el-button>
+                                        <el-button type="primary" @click="$router.push()('/')">随便逛逛</el-button>
                                     </el-empty>
                                 </div>
                             </td>
@@ -89,7 +99,7 @@ const delCart = (ids) => {
                     <span class="red">¥ {{ cartStore.selectedPrice.toFixed(2) }}</span>
                 </div>
                 <div class="total">
-                    <el-button size="large" type="primary">下单结算</el-button>
+                    <el-button size="large" type="primary" @click="toCheckout">下单结算</el-button>
                 </div>
             </div>
         </div>
