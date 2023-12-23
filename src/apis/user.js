@@ -9,3 +9,12 @@ export const loginAPI = (data) => {
         data
     })
 }
+// 猜你喜欢
+export const getLikeListAPI = ({ limit = 4 }) => {
+    return request({
+        url: '/goods/relevant',
+        params: {
+            limit
+        }
+    })
+}
